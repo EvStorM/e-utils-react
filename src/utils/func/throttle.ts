@@ -17,7 +17,7 @@ export const throttle = function (callback: Function, delay: number = 100): Func
  * @param callback  运行函数
  * @param delay     延迟时间（ms）
  */
-export const debounce = function (callback: Function, delay: number = 100): Function {
+export const debounce = function (callback: TimerHandler, delay: number = 100): Function {
 	let timer: any = null
 	return function () {
 		clearTimeout(timer)
@@ -31,7 +31,7 @@ export const debounce = function (callback: Function, delay: number = 100): Func
  * @param delayThr  节流延迟时间（ms）
  * @param delayDeb  防抖延迟时间（ms），不设置 = delayThr + 10;
  */
-export const throttleAndDebounce = function (callback: Function, delayThr: number = 100, delayDeb: number) {
+export const throttleAndDebounce = function (callback: TimerHandler, delayThr: number = 100, delayDeb: number) {
 	delayDeb = delayDeb || delayThr + 10
 	const t = throttle(callback, delayThr)
 	const d = debounce(callback, delayDeb)
@@ -65,7 +65,7 @@ export const throttleRun = function (key: any, callback: Function, delay = 100) 
  * @param callback  运行函数
  * @param delay     延迟时间（ms）
  */
-export const debounceRun = function (key: any, callback: Function, delay = 100) {
+export const debounceRun = function (key: any, callback: TimerHandler, delay = 100) {
 	let timer = setTimeout(callback, delay)
 	clearTimeout(debounceKeys.get(key))
 	debounceKeys.set(key, timer)
@@ -78,7 +78,7 @@ export const debounceRun = function (key: any, callback: Function, delay = 100) 
  * @param delayThr  节流延迟时间（ms）
  * @param delayDeb  防抖延迟时间（ms），不设置 = delayThr + 10 ;
  */
-export const throttleAndDebounceRun = function (key: any, callback: Function, delayThr = 100, delayDeb: number) {
+export const throttleAndDebounceRun = function (key: any, callback: TimerHandler, delayThr = 100, delayDeb: number) {
 	delayDeb = delayDeb || delayThr + 10
 	throttleRun(key, callback, delayThr)
 	debounceRun(key, callback, delayDeb)
