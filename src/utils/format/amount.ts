@@ -1,5 +1,10 @@
-// 金额格式化千分位分割,小数点后保留6位
-export function amountFormat(data: number | string | undefined, dotNum: number = 3) {
+/**
+ * @description: 金额格式化 1000000 => 1,000,000
+ * @param {number} data
+ * @param {number} dotNum
+ * @return {string} string
+ */
+export function amountFormat(data: number | string | undefined, dotNum: number = 3): string {
 	if (data) {
 		const str = data + '' //把数字变成string类型
 		if (str.indexOf('.') !== -1) {

@@ -102,17 +102,6 @@ export function sendToNativeAnArray(data: any) {
 		return [data]
 	}
 }
-/**
- * 关闭webview
- */
-export function NativeCloseWebView() {
-	const plat = judgePlat()
-	if (plat === 'IOS') {
-		sendToNativeIos({ data: 'closeWebView' }, 'closeWebView')
-	} else if (plat === 'Android') {
-		sendToNativeAn({}, 'closeWebView')
-	}
-}
 
 // 是手机浏览器环境
 export const isMobile = () => {

@@ -1,12 +1,12 @@
 import { MutableRefObject, Ref, useEffect, useRef } from 'react'
 import { throttle } from '../func/throttle'
 
-interface KeyBoardProps {
+export interface UseKeyBoardProps {
 	onShow?: () => void
 	onHide?: () => void
 }
 
-export const useKeyBoard = (inputRef: MutableRefObject<any>, { onShow, onHide }: KeyBoardProps) => {
+export const useKeyBoard = (inputRef: MutableRefObject<any>, { onShow, onHide }: UseKeyBoardProps) => {
 	const height = useRef(0)
 	useEffect(() => {
 		let originHeight = document.documentElement.clientHeight || document.body.clientHeight
